@@ -12,14 +12,14 @@
         <div class="w-1/3">
           <div class="text-sm breadcrumbs w-full break-words">
             <ul>
-              <li>Catégorie</li>
+              <li>Category</li>
               <li>
-                <NuxtLink :to="'/category/' + product.category">{{
-                  product.category
+                <NuxtLink :to="'/category/' + categories.find(category => category.id === product.category ).id">{{
+                  categories.find(category => category.id === product.category ).title
                 }}</NuxtLink>
               </li>
               <li>
-                <span class="text-base-content/75">Ce produit</span>
+                <span class="text-base-content/75">{{ product.name }}</span>
               </li>
             </ul>
           </div>
@@ -61,4 +61,6 @@ const {
   pending,
   error,
 } = await useLazyFetch(`http://localhost:3001/products/${productId}`);
+
+const categories = useCategories();
 </script>

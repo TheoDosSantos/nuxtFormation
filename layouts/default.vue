@@ -17,10 +17,15 @@
 </template>
 
 <script setup>
+    const categories = useCategories();
+
+    const menuCategoryItems = categories.value.map((category) => ({
+        path: `/category/${category.id}`,
+        title: category.title,
+    }));
+    
     const menuItems = [
         { path: '/', title: 'Home' },
-        { path: '/category/head', title: 'Category head' },
-        { path: '/category/body', title: 'Category body' },
-        { path: '/category/other', title: 'Category ohter' },
+        ...menuCategoryItems
     ]
 </script>
