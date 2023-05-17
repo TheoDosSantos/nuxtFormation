@@ -10,7 +10,7 @@
                 </li>
             </ul>
         </div>
-        <div class="w-full ml-64 " :class="$route.path === '/' ? '' : 'px-4'">
+        <div class="w-full ml-64">
             <slot />
         </div>
     </div>
