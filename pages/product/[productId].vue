@@ -21,11 +21,7 @@
                       (category) => category.id === product.category
                     ).id
                   "
-                  >{{
-                    categories.find(
-                      (category) => category.id === product.category
-                    ).title
-                  }}</NuxtLink
+                  >{{ $getCategoryTitle(product.category) }}</NuxtLink
                 >
               </li>
               <li>
@@ -50,7 +46,10 @@
                 {{ variant }}
               </option>
             </select>
-            <button class="w-full mt-4 btn" @click="addProductToCart(product, variantSelect)">
+            <button
+              class="w-full mt-4 btn"
+              @click="addProductToCart(product, variantSelect)"
+            >
               Ajouter au panier
             </button>
             <button class="w-full mt-4 btn btn-primary">
@@ -75,7 +74,7 @@ const {
   error,
 } = await useLazyFetch(`http://localhost:3001/products/${productId}`);
 
-const categories = useCategories();
+const { categories } = useRuntimeConfig();
 
 const variantSelect = ref(null);
 const { addProductToCart } = useCart();

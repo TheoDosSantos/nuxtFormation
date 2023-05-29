@@ -4,12 +4,12 @@
       <h2 class="mt-4 text-xl px-4 flex justify-between">
         DT Merch
         <div class="indicator" @click="$router.push('/cart')">
-          <span class="indicator-item badge badge-primary">{{ totalProducts }}</span>
+          <span class="indicator-item badge badge-primary">{{
+            totalProducts
+          }}</span>
           <button class="btn btn-square btn-outline btn-secondary">
-            <span class="text-xs">
-                Panier
-            </span>
-          </button> 
+            <span class="text-xs"> Panier </span>
+          </button>
         </div>
       </h2>
       <ul class="menu w-full py-12">
@@ -30,10 +30,10 @@
 </template>
 
 <script setup>
-const categories = useCategories();
+const { categories } = useRuntimeConfig();
 const { totalProducts } = useCart();
 
-const menuCategoryItems = categories.value.map((category) => ({
+const menuCategoryItems = categories.map((category) => ({
   path: `/category/${category.id}`,
   title: category.title,
 }));

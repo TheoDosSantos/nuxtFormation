@@ -60,7 +60,9 @@ export const useCart = () => {
           selectedProduct.variants.push(variantSelect.value)
         }
       }
-  
+      
+      const { $toast } = useNuxtApp();
+      $toast.success('Product added to cart');
     }
   
     // Removing a product from the cart by its id

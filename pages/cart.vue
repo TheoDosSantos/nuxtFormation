@@ -1,6 +1,10 @@
 <script setup>
+import noEmptyCart from '~~/middleware/no-empty-cart';
+
+definePageMeta({
+  middleware: [noEmptyCart],
+})
 const { selectedProducts, totalPrice, removeProductFromCart } = useCart();
-const categories = useCategories();
 
 const allProductsCheckbox = ref(null);
 const showDeleteBtn = ref(false);
@@ -87,11 +91,7 @@ function deleteCheckedProducts() {
                       </small>
                     </div>
                     <div class="text-sm opacity-50">
-                      {{
-                        categories.find(
-                          (category) => category.id === product.category
-                        ).title
-                      }}
+                      {{ $getCategoryTitle(product.category) }}
                     </div>
                   </div>
                 </div>

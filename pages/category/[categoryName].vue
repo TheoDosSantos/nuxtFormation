@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="products" class="p-4">
-      <h1 class="text-5xl text-center p-5">{{ categories.find(category => category.id === categoryName ).title }} Category</h1>
+      <h1 class="text-5xl text-center p-5">
+        {{ $getCategoryTitle(categoryName) }} Category
+      </h1>
       <CardsContainer v-if="products && products.length > 0" class="mt-16">
         <ProductCard
           v-for="product in products"
@@ -27,6 +29,4 @@ const {
 } = await useLazyFetch(
   `http://localhost:3001/products/?category=${categoryName}`
 );
-
-const categories = useCategories();
 </script>
